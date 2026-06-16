@@ -22,12 +22,17 @@ class FirebaseDB:
             return
 
         try:
+            # Prepare private key - ensure it has PEM headers/footers
+            private_key = Config.FIREBASE_PRIVATE_KEY
+            if not private_key.startswith("-----BEGIN"):
+                private_key = "-----BEGIN PRIVATE KEY-----\n" + private_key + "\n-----END PRIVATE KEY-----\n"
+            
             # Create credentials dictionary from environment variables
             cred_dict = {
                 "type": "service_account",
                 "project_id": Config.FIREBASE_PROJECT_ID,
                 "private_key_id": Config.FIREBASE_PRIVATE_KEY_ID,
-                "private_key": Config.FIREBASE_PRIVATE_KEY,
+                "private_key": private_key,
                 "client_email": Config.FIREBASE_CLIENT_EMAIL,
                 "client_id": Config.FIREBASE_CLIENT_ID,
                 "auth_uri": Config.FIREBASE_AUTH_URI,
