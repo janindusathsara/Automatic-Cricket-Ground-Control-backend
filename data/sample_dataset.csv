@@ -1,54 +1,102 @@
-humidity,temperature,soil_moisture,light_intensity,pitch_condition
-75,22,65,450,Wet Pitch
-72,23,68,460,Wet Pitch
-80,20,75,400,Wet Pitch
-78,21,72,420,Wet Pitch
-85,19,80,380,Wet Pitch
-88,18,85,350,Wet Pitch
-90,17,90,300,Wet Pitch
-92,16,95,250,Wet Pitch
-45,28,35,800,Dry Pitch
-42,30,32,820,Dry Pitch
-40,31,30,850,Dry Pitch
-38,32,28,880,Dry Pitch
-35,33,25,900,Dry Pitch
-32,34,22,920,Dry Pitch
-30,35,20,950,Dry Pitch
-28,36,18,980,Dry Pitch
-58,25,48,600,Balanced Pitch
-56,26,50,620,Balanced Pitch
-60,24,52,580,Balanced Pitch
-59,24,49,610,Balanced Pitch
-55,27,46,640,Balanced Pitch
-57,25,51,590,Balanced Pitch
-62,23,54,570,Balanced Pitch
-61,24,53,575,Balanced Pitch
-70,22,62,480,Wet Pitch
-68,24,60,500,Wet Pitch
-73,21,67,440,Wet Pitch
-76,20,70,410,Wet Pitch
-82,19,78,370,Wet Pitch
-86,18,83,340,Wet Pitch
-46,29,36,790,Dry Pitch
-44,30,34,810,Dry Pitch
-41,31,31,840,Dry Pitch
-39,33,29,870,Dry Pitch
-36,34,26,910,Dry Pitch
-33,35,23,930,Dry Pitch
-63,25,50,610,Balanced Pitch
-61,26,48,630,Balanced Pitch
-59,24,52,600,Balanced Pitch
-60,25,51,605,Balanced Pitch
-58,26,49,615,Balanced Pitch
-64,24,53,585,Balanced Pitch
-74,22,64,470,Wet Pitch
-77,21,71,430,Wet Pitch
-84,19,79,380,Wet Pitch
-89,17,87,310,Wet Pitch
-43,31,33,830,Dry Pitch
-37,34,27,900,Dry Pitch
-31,36,19,960,Dry Pitch
-29,37,17,990,Dry Pitch
-57,25,47,630,Balanced Pitch
-62,24,54,580,Balanced Pitch
-60,25,52,600,Balanced Pitch
+temperature,humidity,light,rain,soilMoisture,wind_kph,cloud,precip_mm,pressure_mb,dewpoint_c,uv,pitch_type,bounce,spin,seam_movement
+25,65,750,0,45,10,30,0,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+28,60,850,0,35,8,20,0,1015,16,8,Batting Friendly,High & Consistent,Very Low,Low
+26,62,800,0,40,9,25,0.5,1014,15,7,Batting Friendly,High & Consistent,Low,Low
+24,68,700,0,50,11,35,1,1012,14,5,Balanced,Medium,Low,Moderate
+27,64,780,0,42,10,28,0,1013,16,7,Batting Friendly,High & Consistent,Low,Low
+29,58,900,0,30,7,15,0,1016,16,9,Dry Pitch,High,Very Low,Low
+30,55,950,0,25,6,10,0,1018,15,10,Pace Friendly,High & Consistent,Very Low,Moderate
+28,52,920,0,28,8,12,0,1017,14,9,Pace Friendly,High & Consistent,Low,Moderate
+22,75,600,1,60,13,60,3,1009,16,3,Bowling Friendly,Medium,Moderate,High
+20,80,550,1,65,15,70,5,1008,17,2,Bowling Friendly,Medium,High,High
+21,78,580,1,62,14,65,4,1009,17,2,Bowling Friendly,Medium,Moderate,High
+23,72,650,0.5,55,12,50,2,1010,16,4,Balanced,Medium,Low,Moderate
+25,60,800,0,38,9,22,0,1014,15,8,Batting Friendly,High & Consistent,Low,Low
+26,58,850,0,35,8,18,0,1015,15,9,Batting Friendly,High & Consistent,Very Low,Low
+24,70,700,1,50,11,40,1,1011,15,5,Balanced,Medium,Low,Moderate
+31,50,950,0,20,5,8,0,1019,13,10,Pace Friendly,High & Consistent,Very Low,Moderate
+32,48,980,0,18,4,5,0,1020,12,11,Pace Friendly,High,Very Low,Low
+30,52,920,0,25,7,12,0,1017,14,9,Pace Friendly,High & Consistent,Low,Moderate
+19,82,540,1,68,16,75,6,1007,18,1,Bowling Friendly,Low,High,High
+18,85,520,1,72,18,80,8,1006,19,1,Spin Friendly,Low,High,High
+20,80,560,1,65,15,70,5,1008,17,2,Bowling Friendly,Medium,High,High
+25,65,780,0,43,10,28,0.2,1013,15,7,Batting Friendly,High & Consistent,Low,Low
+27,63,820,0,41,9,24,0,1014,16,8,Batting Friendly,High & Consistent,Low,Low
+29,58,900,0,32,7,16,0,1016,15,9,Batting Friendly,High & Consistent,Very Low,Low
+22,70,680,1,52,12,55,2.5,1010,16,4,Balanced,Medium,Moderate,Moderate
+23,68,720,0.5,48,11,45,1.5,1011,15,5,Balanced,Medium,Low,Moderate
+28,61,880,0,38,8,21,0,1015,16,8,Batting Friendly,High & Consistent,Low,Low
+26,64,800,0,40,9,26,0.3,1013,15,7,Batting Friendly,High & Consistent,Low,Low
+31,49,960,0,22,5,7,0,1019,13,10,Pace Friendly,High,Very Low,Low
+30,51,930,0,26,6,11,0,1018,13,9,Pace Friendly,High & Consistent,Low,Moderate
+21,78,600,1,60,14,65,4,1009,17,3,Bowling Friendly,Medium,Moderate,High
+19,83,540,1,70,17,78,7,1007,18,1,Spin Friendly,Low,High,High
+20,81,560,1,64,15,72,5,1008,17,2,Bowling Friendly,Medium,High,High
+25,66,760,0,45,10,31,0.5,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+27,62,830,0,39,8,20,0,1015,15,8,Batting Friendly,High & Consistent,Very Low,Low
+24,72,680,1,55,12,58,3,1010,16,4,Balanced,Medium,Moderate,Moderate
+23,70,700,0.5,50,11,48,2,1011,16,5,Balanced,Medium,Low,Moderate
+28,59,910,0,30,7,14,0,1016,15,9,Pace Friendly,High & Consistent,Very Low,Low
+29,56,940,0,27,6,9,0,1017,14,10,Pace Friendly,High & Consistent,Very Low,Moderate
+32,47,990,0,19,4,6,0,1020,12,11,Pace Friendly,High,Very Low,Low
+22,76,620,1,58,13,62,3.5,1009,16,3,Bowling Friendly,Medium,Moderate,High
+18,84,530,1,71,18,80,7.5,1006,19,1,Spin Friendly,Low,High,High
+20,80,570,1,66,15,71,5.5,1008,17,2,Bowling Friendly,Medium,High,High
+25,64,790,0,42,10,27,0.1,1014,15,7,Batting Friendly,High & Consistent,Low,Low
+26,61,860,0,36,8,19,0,1015,15,8,Batting Friendly,High & Consistent,Very Low,Low
+27,59,900,0,33,7,15,0,1016,15,9,Batting Friendly,High & Consistent,Very Low,Low
+24,73,670,1,56,12,60,3.5,1010,16,4,Balanced,Medium,Moderate,Moderate
+23,71,710,0.5,51,11,50,2,1011,15,5,Balanced,Medium,Low,Moderate
+28,60,900,0,31,7,15,0,1016,15,9,Pace Friendly,High & Consistent,Very Low,Low
+30,53,920,0,24,6,10,0,1017,13,9,Pace Friendly,High & Consistent,Low,Moderate
+31,48,970,0,21,5,7,0,1019,13,10,Pace Friendly,High,Very Low,Low
+21,79,610,1,61,14,67,4.5,1009,17,3,Bowling Friendly,Medium,Moderate,High
+19,82,540,1,69,17,77,6.5,1007,18,1,Spin Friendly,Low,High,High
+25,67,770,0,44,10,29,0.3,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+26,63,810,0,38,9,23,0,1014,16,8,Batting Friendly,High & Consistent,Low,Low
+28,57,920,0,29,6,13,0,1016,14,9,Pace Friendly,High & Consistent,Very Low,Low
+29,54,950,0,26,5,8,0,1018,13,10,Pace Friendly,High & Consistent,Very Low,Moderate
+22,74,640,1,54,12,56,2.8,1010,16,3,Balanced,Medium,Moderate,Moderate
+23,69,720,0.5,49,11,46,1.8,1011,16,5,Balanced,Medium,Low,Moderate
+24,75,660,1,57,13,61,4,1009,16,3,Bowling Friendly,Medium,Moderate,High
+20,81,560,1,67,16,73,5.5,1008,17,2,Bowling Friendly,Medium,High,High
+18,83,520,1,70,17,79,7,1007,18,1,Spin Friendly,Low,High,High
+26,60,880,0,34,8,20,0,1015,15,8,Batting Friendly,High & Consistent,Very Low,Low
+27,61,830,0,40,9,22,0,1014,16,8,Batting Friendly,High & Consistent,Low,Low
+25,68,750,0,46,10,32,0.5,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+28,58,910,0,31,7,14,0,1016,15,9,Pace Friendly,High & Consistent,Very Low,Low
+30,51,930,0,25,6,11,0,1018,13,9,Pace Friendly,High & Consistent,Low,Moderate
+31,49,960,0,22,5,8,0,1019,13,10,Pace Friendly,High,Very Low,Low
+22,77,600,1,59,13,63,3,1009,16,2,Bowling Friendly,Medium,Moderate,High
+19,80,540,1,68,16,76,6,1007,18,1,Spin Friendly,Low,High,High
+21,79,580,1,63,14,68,4.5,1009,17,2,Bowling Friendly,Medium,High,High
+25,65,800,0,43,10,28,0,1013,15,7,Batting Friendly,High & Consistent,Low,Low
+26,62,850,0,37,8,19,0,1015,15,8,Batting Friendly,High & Consistent,Very Low,Low
+27,60,900,0,32,7,16,0,1016,15,9,Batting Friendly,High & Consistent,Very Low,Low
+24,71,700,1,53,12,57,3,1010,16,4,Balanced,Medium,Moderate,Moderate
+23,70,720,0.5,50,11,48,1.5,1011,15,5,Balanced,Medium,Low,Moderate
+28,59,900,0,30,7,15,0,1016,15,9,Pace Friendly,High & Consistent,Very Low,Low
+29,55,940,0,27,6,10,0,1017,14,10,Pace Friendly,High & Consistent,Very Low,Moderate
+30,52,920,0,25,6,11,0,1017,13,9,Pace Friendly,High & Consistent,Low,Moderate
+31,48,970,0,21,5,7,0,1019,13,10,Pace Friendly,High,Very Low,Low
+22,75,630,1,56,12,59,3.2,1010,16,3,Bowling Friendly,Medium,Moderate,High
+20,80,550,1,65,15,70,5,1008,17,2,Bowling Friendly,Medium,High,High
+19,82,540,1,70,17,78,6.5,1007,18,1,Spin Friendly,Low,High,High
+25,66,780,0,44,10,30,0.5,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+26,64,810,0,40,9,24,0,1014,16,7,Batting Friendly,High & Consistent,Low,Low
+27,58,910,0,33,7,17,0,1016,15,9,Batting Friendly,High & Consistent,Very Low,Low
+28,56,920,0,30,6,13,0,1016,14,9,Pace Friendly,High & Consistent,Very Low,Low
+29,54,950,0,27,5,9,0,1018,13,10,Pace Friendly,High & Consistent,Very Low,Moderate
+30,51,930,0,26,6,12,0,1017,13,9,Pace Friendly,High & Consistent,Low,Moderate
+31,49,960,0,23,5,8,0,1019,13,10,Pace Friendly,High,Very Low,Low
+32,47,980,0,20,4,6,0,1020,12,11,Pace Friendly,High,Very Low,Low
+24,73,670,1,54,12,58,2.8,1010,16,4,Balanced,Medium,Moderate,Moderate
+23,72,710,0.5,51,11,50,1.8,1011,16,5,Balanced,Medium,Low,Moderate
+22,76,620,1,58,13,62,3.5,1009,16,3,Bowling Friendly,Medium,Moderate,High
+21,78,600,1,61,14,65,4,1009,17,3,Bowling Friendly,Medium,Moderate,High
+20,81,560,1,66,15,72,5.5,1008,17,2,Bowling Friendly,Medium,High,High
+19,84,530,1,71,18,80,7.5,1006,19,1,Spin Friendly,Low,High,High
+25,67,770,0,45,10,29,0.2,1013,15,6,Batting Friendly,High & Consistent,Low,Low
+26,63,820,0,39,9,23,0,1014,16,8,Batting Friendly,High & Consistent,Low,Low
+27,61,880,0,34,8,20,0,1015,15,8,Batting Friendly,High & Consistent,Very Low,Low
+28,58,900,0,32,7,16,0,1016,15,9,Pace Friendly,High & Consistent,Very Low,Low
