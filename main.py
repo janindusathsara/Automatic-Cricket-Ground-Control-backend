@@ -1,9 +1,6 @@
 """
 Cricket Ground Automation System - Backend
 FastAPI application entry point
-
-Data Flow:
-Weather API → Firebase Weather → Sensor Data → ML Model → Prediction → Firebase
 """
 
 from fastapi import FastAPI
@@ -21,9 +18,7 @@ import sys
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-    ]
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
 logger = logging.getLogger(__name__)
 
@@ -37,19 +32,17 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change to specific domains in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Initialize Firebase
+# Initialize Firebase early
 try:
     FirebaseHelper.initialize()
-    logger.info("✓ Firebase initialized successfully")
 except Exception as e:
-    logger.warning(f"⚠ Firebase initialization warning: {str(e)}")
-
+    logger.warning(f"! Firebase initialization warning: {str(e)}")
 
 # Include routers
 app.include_router(weather.router)
@@ -80,35 +73,8 @@ async def health_check():
     """Health check endpoint"""
     return {
         "status": "healthy",
-        "firebase_initialized": True,
+        "firebase_initialized": FirebaseHelper._initialized,
         "timestamp": datetime.now().isoformat(),
-    }
-
-
-@app.get("/api/docs")
-async def api_documentation():
-    """API Documentation"""
-    return {
-        "endpoints": {
-            "prediction": {
-                "POST /ml/predict": "Make multi-output prediction with 11 features",
-                "POST /ml/run-full-pipeline": "Run complete pipeline (sensor+weather+predict+save)",
-                "GET /ml/model-info": "Get model information",
-            },
-            "weather": {
-                "GET /weather/current": "Get current weather from Weather API",
-            },
-            "sensors": {
-                "GET /sensors/latest": "Get latest sensor data from Firebase",
-            },
-        },
-        "ml_features": [
-            "temperature", "humidity", "light", "rain", "soilMoisture",
-            "wind_kph", "cloud", "precip_mm", "pressure_mb", "dewpoint_c", "uv"
-        ],
-        "ml_outputs": [
-            "pitch_type", "bounce", "spin", "seam_movement"
-        ]
     }
 
 
@@ -126,9 +92,8 @@ async def global_exception_handler(request, exc):
 
 
 if __name__ == "__main__":
-    """Run the FastAPI application"""
     print("\n" + "=" * 60)
-    print("🏏 Cricket Ground Automation Backend")
+    print("        Cricket Cricket Ground Automation Backend")
     print("=" * 60)
     print(f"Environment: {Config.APP_ENV}")
     print(f"Host: {Config.HOST}:{Config.PORT}")
@@ -136,14 +101,9 @@ if __name__ == "__main__":
     print("=" * 60)
 
     uvicorn.run(
-        app,
+        "main:app",
         host=Config.HOST,
         port=Config.PORT,
         reload=Config.DEBUG,
-    )
         log_level="info",
     )
-
-
-if __name__ == "__main__":
-    main()

@@ -46,7 +46,7 @@ class ModelTrainer:
             raise FileNotFoundError(f"Dataset not found at {dataset_path}")
 
         df = pd.read_csv(dataset_path)
-        logger.info(f"✓ Dataset loaded: {len(df)} samples")
+        logger.info(f"+ Dataset loaded: {len(df)} samples")
         logger.info(f"  Columns: {list(df.columns)}")
         return df
 
@@ -68,19 +68,19 @@ class ModelTrainer:
             # Extract features
             X = df[self.feature_columns].values
 
-            logger.info(f"\n📊 Dataset Statistics:")
+            logger.info(f"\n[DATA] Dataset Statistics:")
             logger.info(f"  Total samples: {len(df)}")
             logger.info(f"  Feature shape: {X.shape}")
 
             # Split data (once for all targets)
             X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)
 
-            logger.info(f"\n📋 Train-Test Split:")
+            logger.info(f"\n[LIST] Train-Test Split:")
             logger.info(f"  Training samples: {len(X_train)}")
             logger.info(f"  Testing samples: {len(X_test)}")
 
             # Train separate model for each target
-            logger.info(f"\n🤖 Training Multi-Output Random Forest Models...")
+            logger.info(f"\n[ML] Training Multi-Output Random Forest Models...")
             for target in self.target_columns:
                 logger.info(f"\n  Training model for: {target}")
                 
@@ -125,11 +125,11 @@ class ModelTrainer:
                 self.models[target] = model
                 self.label_encoders[target] = le
 
-            logger.info(f"\n✓ All models trained successfully!")
+            logger.info(f"\n+ All models trained successfully!")
 
             # Feature importance (from first model)
             first_model = self.models[self.target_columns[0]]
-            logger.info(f"\n📊 Feature Importance:")
+            logger.info(f"\n[DATA] Feature Importance:")
             for feature, importance in zip(self.feature_columns, first_model.feature_importances_):
                 logger.info(f"  {feature}: {importance:.4f}")
 
@@ -138,7 +138,7 @@ class ModelTrainer:
             return True
 
         except Exception as e:
-            logger.error(f"✗ Error during training: {str(e)}")
+            logger.error(f"- Error during training: {str(e)}")
             import traceback
             traceback.print_exc()
             return False
@@ -163,7 +163,7 @@ class ModelTrainer:
                 f,
             )
 
-        logger.info(f"✓ Model saved to {model_path}")
+        logger.info(f"+ Model saved to {model_path}")
 
     @staticmethod
     def run():
@@ -171,9 +171,9 @@ class ModelTrainer:
         trainer = ModelTrainer()
         success = trainer.train()
         if success:
-            logger.info("\n✅ Training completed successfully!")
+            logger.info("\n+ Training completed successfully!")
         else:
-            logger.error("\n❌ Training failed!")
+            logger.error("\n- Training failed!")
         return success
 
 

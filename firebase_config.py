@@ -9,9 +9,6 @@ from utils.firebase_helper import FirebaseHelper
 class FirebaseDB(FirebaseHelper):
     """Backward compatibility wrapper"""
     pass
-        except Exception as e:
-            print(f"✗ Error deleting from Firebase: {str(e)}")
-            return False
 
 
 # Initialize Firebase on import

@@ -4,8 +4,7 @@ GET /weather/current - Get current weather data
 """
 
 from fastapi import APIRouter, HTTPException
-from weather_service import weather_service
-from firebase_config import FirebaseDB
+from services.weather_service import weather_service
 from typing import Dict
 
 router = APIRouter(prefix="/weather", tags=["weather"])
@@ -35,12 +34,6 @@ async def get_current_weather() -> Dict:
 
         if not weather_data:
             raise HTTPException(status_code=500, detail="Failed to fetch weather data")
-
-        # Optionally store in Firebase
-        try:
-            FirebaseDB.write("cricket_ground/weather/current", weather_data)
-        except Exception as e:
-            print(f"⚠ Warning: Could not write to Firebase: {str(e)}")
 
         return {"success": True, "data": weather_data}
 

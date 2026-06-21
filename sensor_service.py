@@ -32,7 +32,7 @@ class SensorService:
             sensor_data = FirebaseHelper.read(cls.SENSORS_PATH)
 
             if not sensor_data:
-                logger.warning("⚠ No sensor data found in Firebase")
+                logger.warning("! No sensor data found in Firebase")
                 return cls._get_default_sensor_data()
 
             result = {
@@ -44,11 +44,11 @@ class SensorService:
                 "timestamp": sensor_data.get("timestamp", datetime.now().isoformat()),
             }
             
-            logger.info("✓ Sensor data loaded")
+            logger.info("+ Sensor data loaded")
             return result
 
         except Exception as e:
-            logger.error(f"✗ Error fetching sensor data: {str(e)}")
+            logger.error(f"- Error fetching sensor data: {str(e)}")
             return cls._get_default_sensor_data()
 
     @classmethod
@@ -69,7 +69,7 @@ class SensorService:
         try:
             return FirebaseHelper.read(f"{cls.SENSORS_PATH}/history")
         except Exception as e:
-            logger.error(f"✗ Error fetching sensor history: {str(e)}")
+            logger.error(f"- Error fetching sensor history: {str(e)}")
             return None
 
     @classmethod

@@ -25,12 +25,12 @@ class FirebaseHelper:
             return
 
         try:
-            # Prepare private key - ensure it has PEM headers/footers
             private_key = Config.FIREBASE_PRIVATE_KEY
-            if not private_key.startswith("-----BEGIN"):
+            if private_key and "\\n" in private_key:
+                private_key = private_key.replace("\\n", "\n")
+            if private_key and not private_key.startswith("-----BEGIN"):
                 private_key = "-----BEGIN PRIVATE KEY-----\n" + private_key + "\n-----END PRIVATE KEY-----\n"
 
-            # Create credentials dictionary from environment variables
             cred_dict = {
                 "type": "service_account",
                 "project_id": Config.FIREBASE_PROJECT_ID,
@@ -43,22 +43,20 @@ class FirebaseHelper:
                 "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
             }
 
-            # Initialize Firebase Admin SDK
             try:
                 cred = credentials.Certificate(cred_dict)
                 firebase_admin.initialize_app(
                     cred, {"databaseURL": Config.FIREBASE_DATABASE_URL}
                 )
             except ValueError:
-                # App already initialized
                 pass
 
             cls._db = db
             cls._initialized = True
-            logger.info("✓ Firebase initialized successfully")
+            logger.info("+ Firebase initialized successfully")
 
         except Exception as e:
-            logger.error(f"✗ Firebase initialization failed: {str(e)}")
+            logger.error(f"- Firebase initialization failed: {str(e)}")
             raise
 
     @classmethod
@@ -70,13 +68,13 @@ class FirebaseHelper:
 
     @classmethod
     def read(cls, path):
-        """Read data from Firebase path"""
+        """Read data from Firebase path safely"""
         try:
             ref = cls.get_db().reference(path)
-            data = ref.get()
-            return data.val() if data else None
+            # In firebase-admin Python SDK, .get() returns the data directly
+            return ref.get()
         except Exception as e:
-            logger.error(f"✗ Error reading from Firebase {path}: {str(e)}")
+            logger.error(f"- Error reading from Firebase {path}: {str(e)}")
             return None
 
     @classmethod
@@ -85,10 +83,10 @@ class FirebaseHelper:
         try:
             ref = cls.get_db().reference(path)
             ref.set(data)
-            logger.info(f"✓ Successfully wrote data to {path}")
+            logger.info(f"+ Successfully wrote data to {path}")
             return True
         except Exception as e:
-            logger.error(f"✗ Error writing to Firebase {path}: {str(e)}")
+            logger.error(f"- Error writing to Firebase {path}: {str(e)}")
             return False
 
     @classmethod
@@ -97,10 +95,10 @@ class FirebaseHelper:
         try:
             ref = cls.get_db().reference(path)
             ref.update(data)
-            logger.info(f"✓ Successfully updated data at {path}")
+            logger.info(f"+ Successfully updated data at {path}")
             return True
         except Exception as e:
-            logger.error(f"✗ Error updating Firebase {path}: {str(e)}")
+            logger.error(f"- Error updating Firebase {path}: {str(e)}")
             return False
 
     @classmethod
@@ -109,13 +107,13 @@ class FirebaseHelper:
         try:
             ref = cls.get_db().reference(path)
             ref.delete()
-            logger.info(f"✓ Successfully deleted data at {path}")
+            logger.info(f"+ Successfully deleted data at {path}")
             return True
         except Exception as e:
-            logger.error(f"✗ Error deleting from Firebase {path}: {str(e)}")
+            logger.error(f"- Error deleting from Firebase {path}: {str(e)}")
             return False
 
     @classmethod
     def get_server_timestamp(cls):
         """Get server timestamp"""
-        return datetime.now().isoformat()
+        return datetime.utcnow().isoformat() + "Z"
