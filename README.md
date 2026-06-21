@@ -102,7 +102,7 @@ Server runs at: **http://localhost:8000**
 
 ```
 cricket_ground/
-├── data/                    # Written by ESP32/Arduino sensors
+├── data/                    # Written by Labview/Arduino sensors
 │   ├── temperature          # float (°C)
 │   ├── humidity             # float (%)
 │   ├── light                # float (lumens)
@@ -193,3 +193,21 @@ The system uses a Multi-Output Random Forest Classifier predicting 4 targets sim
 4. **Seam Movement**: Low, Moderate, High
 
 If the model is unavailable, the backend automatically uses a **Rule-Based Fallback Engine** built on cricketing domain knowledge.
+
+### Step 5: Test the Full Automation Pipeline
+
+Now that your server is running, you can test the entire pipeline (which grabs the weather, reads sensors from Firebase, runs the ML model, and pushes the result back to Firebase).
+
+Open a new, separate terminal window in your project folder and run your test script:
+
+```bash
+python test_full_pipeline.py
+```
+
+This script will test all edge cases (dry weather, extreme rain) and ensure your multi-output model is predicting the pitch condition correctly.
+
+If you just want to run a quick test that pushes a single prediction to your Firebase database, you can run:
+
+```bash
+python send_prediction_to_firebase.py
+```
